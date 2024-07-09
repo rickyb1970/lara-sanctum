@@ -3,13 +3,7 @@
 @section('page-title','Main Landing Page')
 
 @section('page-content')
-<h1>Welcome to the Site</h1>
-<br>
-
-<form action="{{ route('logout') }}">
-    @csrf
-    <button type="submit">
-        Logout
-    </button>
-</form>
+    @include('slug.logout-slug')
+    <h1>Welcome to the Site</h1>
+    <a href="{{ route('posts.index') }}">Go to User Posts</a>
 @endsection
