@@ -39,7 +39,6 @@ class AuthController extends Controller
 
        if (Auth::attempt(['name' => $request->name,'password' => $request->password])) {
              $request->session()->regenerate();
-             $user->createToken('API-TOKEN')->plainTextToken;
 
              return redirect()->intended('/home');
        }

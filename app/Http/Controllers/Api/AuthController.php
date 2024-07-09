@@ -30,7 +30,7 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $user = User::create([
+            User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -64,7 +64,12 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            auth('sanctum')->attempt(['name' => $request->name, 'password' => $request->password]);
+            if(!Auth::attempt(['name' => $request->name, 'password' => $request->password])){
+                return response()->json([
+                    'status' => 'Error',
+                    'message' => 'Login attempt was unsuccessful.',
+                ], 401);
+            }
 
             return response()->json([
                 'status' => 'Ok',
@@ -81,6 +86,25 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
+        try {
+            if($request->user()){
+                if($request->user()->currentAccessToken()->delete()){
+                    return response()->json([
+                        'status' => 'Ok',
+                        'message' => 'Personal token has been revoked.',
+                    ],200);
+                }
+            } else {
+                return response()->json([
+                    'status' => 'Error',
+                    'message' => 'Unauthorized.'
+                ],401);
+            }
+        } catch(\Throwable $error) {
+            return response()->json([
+                'message' => $error->getMessage()
+            ],500);
+        }
 
     }
 }
