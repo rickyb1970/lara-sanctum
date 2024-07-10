@@ -8,6 +8,7 @@
     <style>
         * {
             font-family: calibri;
+            font-size: 1.5rem;
         }
 
         .auth-labels {
@@ -18,6 +19,12 @@
         .auth-textbox {
             /* display: inline-block; */
             margin-bottom: .5em;
+        }
+
+        .auth-checkbox {
+            line-height: 1em;
+            height: 1em;
+            width: 1em;
         }
     </style>
 </head>

@@ -6,13 +6,15 @@
     <hr>
     @foreach ($posts as $post)
         <div>
-            <h2><span style="color: lightgrey;">{{ '['.$post->user->name.']' }}</span><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h2>
-            <p>{{ $post->body }}</p>
-            <a href="{{ route('posts.edit', $post) }}">Edit</a>
+            <h2><span style="color: blue;">{{ '['.$post->user->name.']' }}</span><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h2>
+            <p>
+               {{ $post->body }}
+               <a href="{{ route('posts.edit', $post) }}">Edit</a>
+            </p>
             <form action="{{ route('posts.destroy', $post) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Delete</button>
+                <button type="submit">Delete Post</button>
             </form>
         </div>
         <hr>

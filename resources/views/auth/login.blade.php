@@ -21,4 +21,7 @@
         </div>
         <button type="submit">Login</button>
     </form>
+    <div>
+        Not yet registered? Click <a href="{{ route('register') }}">Here</a>
+    </div>
 @endsection
