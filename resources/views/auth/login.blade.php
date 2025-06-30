@@ -7,14 +7,14 @@
         @csrf
         <div>
             <label class="auth-labels">Username</label>
-            <input type="text" name="name" value="{{ old('username') }}" required class="auth-textbox">
+            <input type="text" name="name" value="{{ old('username') }}" class="auth-textbox">
             @error('name')
                 <span>{{ $message }}</span>
             @enderror
         </div>
         <div>
             <label class="auth-labels">Password</label>
-            <input type="password" name="password" required class="auth-textbox">
+            <input type="password" name="password" class="auth-textbox">
             @error('password')
                 <span>{{ $message }}</span>
             @enderror
